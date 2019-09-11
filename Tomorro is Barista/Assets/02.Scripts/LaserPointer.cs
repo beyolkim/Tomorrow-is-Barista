@@ -19,6 +19,7 @@ public class LaserPointer : MonoBehaviour
     public Color color = Color.blue;
     public Color clickedColor = Color.green;
 
+    NewBehaviourScript test;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +27,7 @@ public class LaserPointer : MonoBehaviour
         pose = GetComponent<SteamVR_Behaviour_Pose>();
         //입력 소스 추출
         hand = pose.inputSource;
-
+        
         //LineRenderer 생성
         CreateLineRenderer();
     }
