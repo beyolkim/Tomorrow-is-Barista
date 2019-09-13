@@ -19,6 +19,7 @@ TagManager:
   - SteamTowel
   - CleanTowel
   - Tray
+  - PortaTowel
   layers:
   - Default
   - TransparentFX
