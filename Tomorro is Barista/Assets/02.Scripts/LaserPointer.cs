@@ -19,7 +19,7 @@ public class LaserPointer : MonoBehaviour
     public Color color = Color.blue;
     public Color clickedColor = Color.green;
 
-    NewBehaviourScript test;
+
     // Start is called before the first frame update
     void Start()
     {
