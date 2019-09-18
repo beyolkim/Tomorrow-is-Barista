@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Yun_ClearFluid_Watter
+  m_Name: Yun_ClearFluid_watter
   m_Shader: {fileID: 4800000, guid: 357625946a6e744b5948e12849e28171, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
@@ -57,7 +57,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BumpScale: 1
-    - _Cloudiness: 26.7
+    - _Cloudiness: 0
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
@@ -68,7 +68,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _RefractionCoeff: 0.01
+    - _RefractionCoeff: -0.0357
     - _Smoothness: 0.8
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
