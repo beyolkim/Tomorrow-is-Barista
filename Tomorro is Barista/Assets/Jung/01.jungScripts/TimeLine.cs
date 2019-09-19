@@ -9,14 +9,14 @@ using Random = UnityEngine.Random;
 public class QuizBank //행렬 항목 만들기.
 {
     public string quiz;
-    public int answer;
+    public string answer;
 }
 
 public class TimeLine : MonoBehaviour
 {
-    SelectedAns selectedAns;
+    public SelectedAns selectedAns;
 
-    public QuizBank[] quizBank;       
+    public QuizBank[] quizBank;
 
     float totalTime; // 총 시간 재기
     public Slider timeSlider;
@@ -37,7 +37,9 @@ public class TimeLine : MonoBehaviour
 
     private int random;
 
-    public int CorrectAnswer; // 정답은
+    public string ans;
+
+    bool isQuiz = false;
 
     public enum TimeChange // 상태 변화
     {
@@ -56,24 +58,30 @@ public class TimeLine : MonoBehaviour
 
         QuizBank _quiz1 = new QuizBank();
         _quiz1.quiz = "- Flavor : Floral , Raisin \n - Taste Balance : Cane Sugar & Sweet \n - Acidity : Green grafe , Juicy \n - Body : Soft body \n - After : Smooth , Clean \n 꽃계열의 향. 과일의 단맛. 산미.";
+        _quiz1.answer = "Dolce";
         quizBank[0] = _quiz1;
-        
+
         QuizBank _quiz2 = new QuizBank();
         _quiz2.quiz = "- Falvor : Winey , Complexity \n- Taste Balance : Sweet & Caramel \n - Acidity : Blackberry , pomegranate \n - Body : Medium body \n - After : Clean & Long finish \n 달달한 카라멜향. 20초반 추출시 산미. 20대 후반 추출시 쓴맛.";
+        _quiz2.answer = "Largo";
         quizBank[1] = _quiz2;
-        
+
+
         QuizBank _quiz3 = new QuizBank();
         _quiz3.quiz = "- Flavor : Herb-like \n - Taste Balance : Nutty & CaCao \n - Acidity : Grapefruit , Blackcurrant \n - Body : Medium body \n -After : Smooth Mouthfeel , Clean \n 허브. 산미. 쓴맛.";
+        _quiz3.answer = "Lusso";
         quizBank[2] = _quiz3;
+
 
         //quizBank[0].quiz = "- Flavor : Floral , Raisin \n - Taste Balance : Cane Sugar & Sweet \n - Acidity : Green grafe , Juicy \n - Body : Soft body \n - After : Smooth , Clean \n 꽃계열의 향. 과일의 단맛. 산미.";
         //quizBank[1].quiz = "- Falvor : Winey , Complexity \n- Taste Balance : Sweet & Caramel \n - Acidity : Blackberry , pomegranate \n - Body : Medium body \n - After : Clean & Long finish \n 달달한 카라멜향. 20초반 추출시 산미. 20대 후반 추출시 쓴맛.";
         //quizBank[2].quiz = "- Flavor : Herb-like \n - Taste Balance : Nutty & CaCao \n - Acidity : Grapefruit , Blackcurrant \n - Body : Medium body \n -After : Smooth Mouthfeel , Clean \n 허브. 산미. 쓴맛.";
 
+
         timeChangeState = TimeChange.EXPRESSION;
         StartCoroutine(CheckTimeChange());
 
-        selectedAns = GameObject.Find("Controller (right)").GetComponent<SelectedAns>();
+        selectedAns = selectedAns.GetComponent<SelectedAns>();
 
     }
 
@@ -100,10 +108,12 @@ public class TimeLine : MonoBehaviour
         yield return new WaitForSeconds(3);
         frontText.text = ("문제를 풀어주세요.");
         PopUpQuiz();
+        isQuiz = true;
         yield return new WaitForSeconds(29);
-        if(quizUp!=null)
+        isQuiz = false;
+        if (quizUp != null)
         {
-        quizUp.SetActive(false); // 문제 창 끄기
+            quizUp.SetActive(false); // 문제 창 끄기
         }
         yield return new WaitForSeconds(1);
         frontText.text = ("선택한 원두를 심사위원 테이블에 전달하세요.");
@@ -114,22 +124,11 @@ public class TimeLine : MonoBehaviour
     private void PopUpQuiz()
     {
         quizUp.SetActive(true);
-        
-        int i = Random.Range(0,3);
+
+        int i = Random.Range(0, 3);
         quizTex.text = quizBank[i].quiz;
 
-        int ans = quizBank[i].answer;
-
-        if(selectedAns.selectedAns == ans)
-        {
-            frontText.text = ("맞았습니다");
-            Debug.Log("YES");
-        }
-        else
-        {   
-            frontText.text = ("아닙니다");
-            Debug.Log("NO");
-        }
+        ans = quizBank[i].answer;
 
     }
 
@@ -292,6 +291,30 @@ public class TimeLine : MonoBehaviour
 
         timeChangeState = TimeChange.TIMEOVER;
         stateText.text = ("끝났습니다.");
+
+    }
+
+    private void Update()
+    {
+        if (isQuiz == true)
+        {
+            if (selectedAns.selectedAns == ans)
+            {
+                frontText.text = ("맞았습니다");
+                Debug.Log("YES");
+            }
+            else if (selectedAns.selectedAns == "none")
+            {
+                frontText.text = ("원두를 골라주세요");
+            }
+            else if (selectedAns.selectedAns != ans && selectedAns.selectedAns != "none")
+            {
+                frontText.text = ("아닙니다");
+                Debug.Log("NO");
+            }
+        }
+
+
 
     }
 
