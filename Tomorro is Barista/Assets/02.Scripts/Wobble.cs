@@ -9,6 +9,8 @@ public class Wobble : MonoBehaviour
     Vector3 velocity;
     Vector3 lastRot;
     Vector3 angularVelocity;
+
+
     public float MaxWobble = 0.03f;
     public float WobbleSpeed = 1f;
     public float Recovery = 1f;
@@ -22,7 +24,9 @@ public class Wobble : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+     
         rend = GetComponent<Renderer>();
+        
     }
     private void Update()
     {

@@ -5,6 +5,8 @@ using UnityEngine;
 public class GrinderAnimation : MonoBehaviour
 {
     Animator anim;
+    public GameObject coffee_particle;
+
     // Start is called before the first frame update
     void Start()
     {

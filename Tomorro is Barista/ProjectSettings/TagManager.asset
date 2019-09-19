@@ -5,6 +5,20 @@ TagManager:
   serializedVersion: 2
   tags:
   - TEST
+  - Coaster
+  - CapuccinoCup
+  - Spoon
+  - Grinder
+  - SteamTowel
+  - CleanTowel
+  - PortaTowel
+  - CoffeeMachine
+  - PortaFilter
+  - Pitcher
+  - ShotGlass
+  - Tray
+  - Floor
+  - Milk
   layers:
   - Default
   - TransparentFX
@@ -14,7 +28,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - PortaFilter_Bowl
   - 
   - 
   - 

@@ -49,7 +49,7 @@ namespace Obi{
 		private static Dictionary<Mesh,MeshDataHandles> meshDataCache = new Dictionary<Mesh,MeshDataHandles>();
 		private bool meshDataHasChanged = false;
 		private MeshDataHandles handles;
-
+        
 		public ObiMeshShapeTracker(MeshCollider collider){
 
 			this.collider = collider;
