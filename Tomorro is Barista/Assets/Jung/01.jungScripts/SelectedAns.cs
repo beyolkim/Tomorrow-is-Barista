@@ -4,21 +4,26 @@ using UnityEngine;
 
 public class SelectedAns : MonoBehaviour
 {
-    public int selectedAns;
+    public string selectedAns ;
+
+    private void Start() 
+    {
+        selectedAns = "none";
+    }
 
 private void OnCollisionEnter(Collision other) 
 {
     if(other.gameObject.name == "BeanPlate0")
     {
-        selectedAns = 0;
+        selectedAns = "Dolce";
     }   
         if(other.gameObject.name == "BeanPlate1")
     {
-        selectedAns = 1;
+        selectedAns = "Largo";
     }
         if(other.gameObject.name == "BeanPlate2")
     {
-        selectedAns = 2;
+        selectedAns = "Lusso";
     }
 
 

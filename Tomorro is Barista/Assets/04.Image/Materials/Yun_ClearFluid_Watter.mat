@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Yun_ClearFluid_watter
+  m_Name: Yun_ClearFluid_Watter
   m_Shader: {fileID: 4800000, guid: 357625946a6e744b5948e12849e28171, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
