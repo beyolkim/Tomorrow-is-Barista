@@ -11,6 +11,7 @@ public class GrabObjectController : MonoBehaviour
     public SteamVR_Behaviour_Pose controllerPose;
     public SteamVR_Action_Boolean grip;
     public SteamVR_Action_Boolean trigger;
+    public ISteamVR_Action_Vibration haptic;
 
     private Transform tr;      // cameraRig아래에 있는 Controller의 위치   
     
