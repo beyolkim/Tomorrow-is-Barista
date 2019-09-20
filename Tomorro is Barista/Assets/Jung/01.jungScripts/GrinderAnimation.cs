@@ -17,16 +17,12 @@ public class GrinderAnimation : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            anim.SetBool("isClickHandle",true);
+            anim.SetTrigger("isClickHandle");
 
         }
     }
 
-    public void HandleBack()
-    {
-        anim.SetBool("isClickHandle",false);
 
-    }
 
 
 }

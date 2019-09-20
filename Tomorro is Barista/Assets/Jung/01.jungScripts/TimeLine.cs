@@ -57,18 +57,18 @@ public class TimeLine : MonoBehaviour
         quizBank = new QuizBank[3];
 
         QuizBank _quiz1 = new QuizBank();
-        _quiz1.quiz = "- Flavor : Floral , Raisin \n - Taste Balance : Cane Sugar & Sweet \n - Acidity : Green grafe , Juicy \n - Body : Soft body \n - After : Smooth , Clean \n 꽃계열의 향. 과일의 단맛. 산미.";
+        _quiz1.quiz = "다음 특성을 지닌 원두는 무엇일까요? \n- Flavor : Floral , Raisin \n - Taste Balance : Cane Sugar & Sweet \n - Acidity : Green grafe , Juicy \n - Body : Soft body \n - After : Smooth , Clean \n 꽃계열의 향. 과일의 단맛. 산미.";
         _quiz1.answer = "Dolce";
         quizBank[0] = _quiz1;
 
         QuizBank _quiz2 = new QuizBank();
-        _quiz2.quiz = "- Falvor : Winey , Complexity \n- Taste Balance : Sweet & Caramel \n - Acidity : Blackberry , pomegranate \n - Body : Medium body \n - After : Clean & Long finish \n 달달한 카라멜향. 20초반 추출시 산미. 20대 후반 추출시 쓴맛.";
+        _quiz2.quiz = "다음 특성을 지닌 원두는 무엇일까요? \n- Falvor : Winey , Complexity \n- Taste Balance : Sweet & Caramel \n - Acidity : Blackberry , pomegranate \n - Body : Medium body \n - After : Clean & Long finish \n 달달한 카라멜향. 20초반 추출시 산미. \n 20대 후반 추출시 쓴맛.";
         _quiz2.answer = "Largo";
         quizBank[1] = _quiz2;
 
 
         QuizBank _quiz3 = new QuizBank();
-        _quiz3.quiz = "- Flavor : Herb-like \n - Taste Balance : Nutty & CaCao \n - Acidity : Grapefruit , Blackcurrant \n - Body : Medium body \n -After : Smooth Mouthfeel , Clean \n 허브. 산미. 쓴맛.";
+        _quiz3.quiz = "다음 특성을 지닌 원두는 무엇일까요? \n- Flavor : Herb-like \n - Taste Balance : Nutty & CaCao \n - Acidity : Grapefruit , Blackcurrant \n - Body : Medium body \n -After : Smooth Mouthfeel , Clean \n 허브. 산미. 쓴맛.";
         _quiz3.answer = "Lusso";
         quizBank[2] = _quiz3;
 

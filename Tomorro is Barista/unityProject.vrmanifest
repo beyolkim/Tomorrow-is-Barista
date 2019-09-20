@@ -5,9 +5,7 @@
       "app_key": "application.generated.unity.tomorroisbarista.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-
-      "action_manifest_path": "D:\\GitHub\\Tomorrow-is-Barista\\Tomorro is Barista\\actions.json",
-
+      "action_manifest_path": "D:\\hee project\\Tomorrow-is-Barista\\Tomorro is Barista\\actions.json",
       "strings": {
         "en_us": {
           "name": "Tomorro is Barista [Testing]"
