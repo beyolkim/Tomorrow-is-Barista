@@ -43,8 +43,9 @@ public class GrabObjectController : MonoBehaviour
         //그랩그립을 누를 때
         if (grip.GetStateDown(handType))
         {
-            GripAnimOn();
             Debug.Log("난 지금 눌렀어");
+
+            GripAnimOn();
 
             if (collidingObject)
             {

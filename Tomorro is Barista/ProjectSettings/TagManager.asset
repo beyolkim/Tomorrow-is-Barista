@@ -19,6 +19,8 @@ TagManager:
   - Tray
   - Floor
   - Milk
+  - Coffee_Port_Right
+  - Coffee_Port_Left
   layers:
   - Default
   - TransparentFX

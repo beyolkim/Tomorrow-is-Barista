@@ -11,7 +11,7 @@ public class SelectedAns : MonoBehaviour
         selectedAns = "none";
     }
 
-private void OnCollisionEnter(Collision other) 
+private void OnTriggerEnter(Collider other) 
 {
     if(other.gameObject.name == "BeanPlate0")
     {
