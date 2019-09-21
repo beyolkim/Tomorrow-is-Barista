@@ -11,7 +11,7 @@ public class GrabObjectController : MonoBehaviour
     public SteamVR_Behaviour_Pose controllerPose;
     public SteamVR_Action_Boolean grip;
     public SteamVR_Action_Boolean trigger;
-    public ISteamVR_Action_Vibration haptic;
+    private SteamVR_Action_Vibration haptic = SteamVR_Actions.default_Haptic;
 
     private Transform tr;      // cameraRig아래에 있는 Controller의 위치   
     
@@ -43,9 +43,8 @@ public class GrabObjectController : MonoBehaviour
         //그랩그립을 누를 때
         if (grip.GetStateDown(handType))
         {
-            Debug.Log("난 지금 눌렀어");
-
             GripAnimOn();
+            Debug.Log("난 지금 눌렀어");
 
             if (collidingObject)
             {
@@ -98,6 +97,11 @@ public class GrabObjectController : MonoBehaviour
     public void FingerAnimOff()
     {
         anim.SetBool(hashIsFinger, false);
+    }
+
+    public void HapticOn()
+    {
+        haptic.Execute(0.2f, 0.2f, 50.0f, 0.5f, (handType));
     }
 
     //콜라이더 충돌이 시작되는 순간
