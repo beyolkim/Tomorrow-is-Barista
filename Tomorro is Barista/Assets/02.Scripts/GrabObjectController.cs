@@ -19,7 +19,6 @@ public class GrabObjectController : MonoBehaviour
     private Animator anim;
     private int hashIsGrabVer; // 그립 파라미터
     private int hashIsFinger;  // 포인트 손가락 파라미터
-    private 
     
     private GameObject collidingObject; //현재 충돌중인 객체
     private GameObject objectInHand;    //플레이어가 잡은 객체
@@ -38,7 +37,7 @@ public class GrabObjectController : MonoBehaviour
         //애니메이터 파라미터의 해시값을 추출해 저장
         hashIsGrabVer = Animator.StringToHash("GrabVer");
         hashIsFinger = Animator.StringToHash("Finger");
-        hashIsSteamBtn = Animator.StringToHash("isSteamBtn");
+       
     }
 
     // Update is called once per frame
