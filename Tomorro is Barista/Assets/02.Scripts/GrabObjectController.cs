@@ -15,9 +15,11 @@ public class GrabObjectController : MonoBehaviour
 
     private Transform tr;      // cameraRig아래에 있는 Controller의 위치   
     
+    //애니메이션
     private Animator anim;
-    private int hashIsGrabVer; // 애니메이터 파라미터의 해쉬값을 저장할 변수
-    private int hashIsFinger;  // 애니메이터 파라미터의 해쉬값을 저장할 변수
+    private int hashIsGrabVer; // 그립 파라미터
+    private int hashIsFinger;  // 포인트 손가락 파라미터
+    private 
     
     private GameObject collidingObject; //현재 충돌중인 객체
     private GameObject objectInHand;    //플레이어가 잡은 객체
@@ -32,9 +34,11 @@ public class GrabObjectController : MonoBehaviour
 
         //애니메이터 컨트롤러 추출
         anim = tr.GetComponentInChildren<Animator>(); //첫번째 자식 오브젝트의 animator 컴포넌트 추출 
+
         //애니메이터 파라미터의 해시값을 추출해 저장
         hashIsGrabVer = Animator.StringToHash("GrabVer");
         hashIsFinger = Animator.StringToHash("Finger");
+        hashIsSteamBtn = Animator.StringToHash("isSteamBtn");
     }
 
     // Update is called once per frame
@@ -126,7 +130,7 @@ public class GrabObjectController : MonoBehaviour
     }
 
     //충돌중인 객체로 설정
-    private void SetCollidingObject(Collider col)
+    public void SetCollidingObject(Collider col)
     {
         if (collidingObject || !col.GetComponent<Rigidbody>())  //collidingObject를 2개 잡지 않기 위해 || rigidbody가 없는 object는 충돌객체로 인식x
         {                                                       
