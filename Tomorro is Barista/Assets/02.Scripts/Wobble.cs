@@ -11,6 +11,11 @@ public class Wobble : MonoBehaviour
     Vector3 angularVelocity;
 
 
+    public float fillpersent; // 채워지는 값 쉐이더에서 가져왔음
+
+    float parent_RotX;
+    float reslut_RotX;
+
     public float MaxWobble = 0.03f;
     public float WobbleSpeed = 1f;
     public float Recovery = 1f;
@@ -24,13 +29,20 @@ public class Wobble : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-     
-        rend = GetComponent<Renderer>();
         
+        rend = GetComponent<Renderer>();
     }
     private void Update()
     {
+        //MaxWobble = Mathf.PingPong(time*2, 6f);
+        //MaxWobble = Mathf.Lerp(-3, 3, Mathf.PingPong(Time.time, 3f));
+
+        //fillpersent = Mathf.Lerp(-0.8f, -0.1f, Time.time*0.1f); // 채워지는 함수
+
+        reslut_RotX =Mathf.Lerp(gameObject.transform.parent.transform.eulerAngles.x, 150, 0.1f);
+        Debug.Log(reslut_RotX);
         time += Time.deltaTime;
+
         // decrease wobble over time
         wobbleAmountToAddX = Mathf.Lerp(wobbleAmountToAddX, 0, Time.deltaTime * (Recovery));
         wobbleAmountToAddZ = Mathf.Lerp(wobbleAmountToAddZ, 0, Time.deltaTime * (Recovery));
@@ -44,6 +56,9 @@ public class Wobble : MonoBehaviour
         rend.material.SetFloat("_WobbleX", wobbleAmountX);
         rend.material.SetFloat("_WobbleZ", wobbleAmountZ);
 
+        //fillpersent 추가
+        rend.material.SetFloat("_FillAmount", fillpersent);
+
         // velocity
         velocity = (lastPos - transform.position) / Time.deltaTime;
         angularVelocity = transform.rotation.eulerAngles - lastRot;
@@ -56,6 +71,9 @@ public class Wobble : MonoBehaviour
         // keep last position
         lastPos = transform.position;
         lastRot = transform.rotation.eulerAngles;
+
+
+
     }
 
 
