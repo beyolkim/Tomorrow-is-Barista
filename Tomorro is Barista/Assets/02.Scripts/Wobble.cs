@@ -40,7 +40,7 @@ public class Wobble : MonoBehaviour
         //fillpersent = Mathf.Lerp(-0.8f, -0.1f, Time.time*0.1f); // 채워지는 함수
 
         reslut_RotX =Mathf.Lerp(gameObject.transform.parent.transform.eulerAngles.x, 150, 0.1f);
-        Debug.Log(reslut_RotX);
+        //Debug.Log(reslut_RotX);
         time += Time.deltaTime;
 
         // decrease wobble over time
@@ -76,6 +76,10 @@ public class Wobble : MonoBehaviour
 
     }
 
+    public void Espresso_Fill()
+    {
+        fillpersent = Mathf.Lerp(1f, -0.12f, Time.time*0.05f); // 채워지는 함수
 
+    }
 
 }

@@ -82,7 +82,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: CoffeFlow
+    m_ConditionEvent: IsBool
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8303208091948057866}
@@ -155,7 +155,7 @@ AnimatorController:
   m_Name: Coffe_Flow
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: CoffeFlow
+  - m_Name: IsBool
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -260,7 +260,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: CoffeFlow
+    m_ConditionEvent: IsBool
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 3155268724889511859}
@@ -285,7 +285,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: CoffeFlow
+    m_ConditionEvent: IsBool
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6069925131529383713}
