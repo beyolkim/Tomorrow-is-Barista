@@ -72,14 +72,27 @@ public class Wobble : MonoBehaviour
         lastPos = transform.position;
         lastRot = transform.rotation.eulerAngles;
 
-
-
     }
 
     public void Espresso_Fill()
     {
-        fillpersent = Mathf.Lerp(1f, -0.12f, Time.time*0.05f); // 채워지는 함수
-
+        StartCoroutine(Coffee_Fill());
     }
 
+
+    IEnumerator Coffee_Fill()
+    {
+        while (fillpersent > -0.12f)
+        {
+            fillpersent -= 0.01f;
+            Debug.Log(fillpersent);
+
+            yield return new WaitForSeconds(0.165f);
+        }
+        ParticleSystem steams = this.transform.GetComponentInChildren<ParticleSystem>();
+        steams.Play();
+        Debug.Log("다 채워졌다!!");
+        //fillpersent = Mathf.Lerp(1f, -0.12f, Time.time * 0.05f); // 채워지는 함수
+
+    }
 }
