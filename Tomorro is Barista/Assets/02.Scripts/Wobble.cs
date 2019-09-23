@@ -10,6 +10,15 @@ public class Wobble : MonoBehaviour
     Vector3 lastRot;
     Vector3 angularVelocity;
 
+    public GameObject steams;
+    public GameObject Milk_Flow;
+    GameObject parent_obj;
+    Vector3 parent_rot_local;
+    Vector3 milk_rot_local;
+    float parent_rot_final;
+
+
+
 
     public float fillpersent; // 채워지는 값 쉐이더에서 가져왔음
 
@@ -30,16 +39,30 @@ public class Wobble : MonoBehaviour
     void Start()
     {
         
+        parent_obj = transform.parent.gameObject;
+        parent_RotX = parent_obj.transform.eulerAngles.x;
         rend = GetComponent<Renderer>();
+        
+        
+
     }
     private void Update()
     {
+        parent_rot_final = Quaternion.Angle(transform.localRotation, parent_obj.transform.rotation);// 밀크와 컵의 벡터의 각도차
+  
+        Debug.Log("최종값 :" + parent_rot_final);
+        if (parent_rot_final > 92)
+        {
+            Debug.Log("나왔다");
+
+            Milk_Flow.SetActive(true);
+        }
         //MaxWobble = Mathf.PingPong(time*2, 6f);
         //MaxWobble = Mathf.Lerp(-3, 3, Mathf.PingPong(Time.time, 3f));
 
         //fillpersent = Mathf.Lerp(-0.8f, -0.1f, Time.time*0.1f); // 채워지는 함수
 
-        reslut_RotX =Mathf.Lerp(gameObject.transform.parent.transform.eulerAngles.x, 150, 0.1f);
+        //reslut_RotX =Mathf.Lerp(gameObject.transform.parent.transform.eulerAngles.x, 150, 0.1f);
         //Debug.Log(reslut_RotX);
         time += Time.deltaTime;
 
@@ -82,17 +105,14 @@ public class Wobble : MonoBehaviour
 
     IEnumerator Coffee_Fill()
     {
+        steams.SetActive(true);
         while (fillpersent > -0.12f)
         {
             fillpersent -= 0.01f;
-            Debug.Log(fillpersent);
-
+            
             yield return new WaitForSeconds(0.165f);
         }
-        ParticleSystem steams = this.transform.GetComponentInChildren<ParticleSystem>();
-        steams.Play();
-        Debug.Log("다 채워졌다!!");
-        //fillpersent = Mathf.Lerp(1f, -0.12f, Time.time * 0.05f); // 채워지는 함수
-
+        
+         Debug.Log("다 채워졌다!!");
     }
 }

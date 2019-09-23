@@ -27,13 +27,12 @@ public class Animation_Controller : MonoBehaviour
     IEnumerator Coffee_Flow()
     {
         yield return new WaitForSeconds(2);
-
         anim.SetBool(aniIsCheck, true);
         yield return new WaitForSeconds(20);
         anim.SetBool(aniIsCheck, false);
     }
 
-    public void OnTriggerEnter(Collider other) //충돌감지 콜백함수 
+    public void OnTriggerEnter(Collider other)
     {
         Debug.Log("커피가차오른다");
         FillCoffee(other);

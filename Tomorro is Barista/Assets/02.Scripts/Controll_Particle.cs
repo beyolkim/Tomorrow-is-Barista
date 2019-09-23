@@ -9,7 +9,9 @@ public class Controll_Particle : MonoBehaviour
     void Start()
     {
         coffeepouder = gameObject.GetComponent<ParticleSystem>();
-    
+        ParticleStart();
+
+
     }
     public void ParticleStop()
     {

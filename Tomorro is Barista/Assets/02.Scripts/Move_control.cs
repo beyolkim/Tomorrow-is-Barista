@@ -7,14 +7,15 @@ public class Move_control : MonoBehaviour
 {
    
     public GameObject obj1;
-    public GameObject ghost_Port;
+    public GameObject ghost_Port_R;
+    public GameObject ghost_Port_L;
     public GameObject ghost_Grinder;   
     void OnTriggerEnter(Collider other)
 
     {
-        Vector3 pos_Grinder = new Vector3(118.29f, 10.349f, -12.837f);
-        Vector3 pos_Port = new Vector3(123.236f, 12.195f, -11.417f);
-        Vector3 angle_Port = new Vector3(90f,0f,-30f);
+        Vector3 pos_Grinder = new Vector3(118.29f, 10.209f, -12.314f);
+        Vector3 pos_Port = new Vector3(123.465f, 12.063f, -10.961f);
+        Vector3 angle_Port = new Vector3(-180f,210f,-180f);
 
         if (other.gameObject.CompareTag("Grinder"))
         {
@@ -32,8 +33,15 @@ public class Move_control : MonoBehaviour
                                        , "easeType", "Math.easeOutExpo"
                                        , "speed", 5.0f
                                        ));
+            
             obj1.transform.rotation = Quaternion.Euler(angle_Port);
-            ghost_Port.GetComponent<Animator>().SetBool("isRotate", true);
+            ghost_Port_R.SetActive(false);
+
+            iTween.RotateTo(obj1, iTween.Hash("y", 0
+                                       , "easeType", "Math.easeOutExpo"
+                                       , "speed", 10.0f
+                                       ));
+
         }
 
     }
