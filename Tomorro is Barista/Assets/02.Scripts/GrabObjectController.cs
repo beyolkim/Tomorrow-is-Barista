@@ -121,17 +121,13 @@ public class GrabObjectController : MonoBehaviour
     //충돌이 끝날 때
     public void OnTriggerExit(Collider other) //충돌 상태에서 빠져 나왔을 때, 1회 자동 호출
     {
-        if (!collidingObject)
-        {
-            return;
-        }
         collidingObject = null; 
     }
 
     //충돌중인 객체로 설정
     public void SetCollidingObject(Collider col)
     {
-        if (collidingObject || !col.GetComponent<Rigidbody>())  //collidingObject를 2개 잡지 않기 위해 || rigidbody가 없는 object는 충돌객체로 인식x
+        if (collidingObject != null || !col.GetComponent<Rigidbody>())  //collidingObject를 2개 잡지 않기 위해 || rigidbody가 없는 object는 충돌객체로 인식x
         {                                                       
             return;
         }
@@ -169,7 +165,7 @@ public class GrabObjectController : MonoBehaviour
         if (GetComponent<FixedJoint>())
         {
             GetComponent<FixedJoint>().connectedBody = null;
-            Destroy(GetComponent<FixedJoint>());
+            //Destroy(GetComponent<FixedJoint>());
 
             objectInHand.GetComponent<Rigidbody>().velocity =
                 controllerPose.GetVelocity();
