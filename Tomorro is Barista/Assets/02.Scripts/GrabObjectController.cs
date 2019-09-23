@@ -143,8 +143,8 @@ public class GrabObjectController : MonoBehaviour
 
 
         var joint = AddFixedJoint();
-        
         joint.connectedBody = objectInHand.GetComponent<Rigidbody>();
+        
     }
     //FixedJoint = 객체들을 하나로 묶어 고정 시킴
     //breakForce = 조인트가 제거되기 위해 필요한 힘의 크기
