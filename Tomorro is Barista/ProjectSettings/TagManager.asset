@@ -21,6 +21,7 @@ TagManager:
   - Milk
   - Coffee_Port_Right
   - Coffee_Port_Left
+  - Milk_Inner
   layers:
   - Default
   - TransparentFX
@@ -31,7 +32,7 @@ TagManager:
   - 
   - 
   - PortaFilter_Bowl
-  - 
+  - Capuccino
   - 
   - 
   - 

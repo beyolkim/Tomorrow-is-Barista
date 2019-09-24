@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Valve.VR;
 public class Wobble : MonoBehaviour
 {
     Renderer rend;
@@ -11,13 +11,17 @@ public class Wobble : MonoBehaviour
     Vector3 angularVelocity;
 
     public GameObject steams;
-    public GameObject Milk_Flow;
+    public GameObject capuccino;
+    public Animator Milk_Flow;
+
+    int num_particle;
+    ParticleSystem capuccino_particle;
     GameObject parent_obj;
     Vector3 parent_rot_local;
     Vector3 milk_rot_local;
     float parent_rot_final;
-
-
+    private int aniIsCheck;
+    bool check_Ani;
 
 
     public float fillpersent; // 채워지는 값 쉐이더에서 가져왔음
@@ -35,6 +39,8 @@ public class Wobble : MonoBehaviour
     float pulse;
     float time = 0.5f;
 
+
+
     // Use this for initialization
     void Start()
     {
@@ -42,21 +48,13 @@ public class Wobble : MonoBehaviour
         parent_obj = transform.parent.gameObject;
         parent_RotX = parent_obj.transform.eulerAngles.x;
         rend = GetComponent<Renderer>();
-        
-        
+        aniIsCheck = Animator.StringToHash("IsBool");
+        //num_particle = capuccino_particle.particleCount;
+
 
     }
     private void Update()
     {
-        parent_rot_final = Quaternion.Angle(transform.localRotation, parent_obj.transform.rotation);// 밀크와 컵의 벡터의 각도차
-  
-        Debug.Log("최종값 :" + parent_rot_final);
-        if (parent_rot_final > 92)
-        {
-            Debug.Log("나왔다");
-
-            Milk_Flow.SetActive(true);
-        }
         //MaxWobble = Mathf.PingPong(time*2, 6f);
         //MaxWobble = Mathf.Lerp(-3, 3, Mathf.PingPong(Time.time, 3f));
 
@@ -81,6 +79,8 @@ public class Wobble : MonoBehaviour
 
         //fillpersent 추가
         rend.material.SetFloat("_FillAmount", fillpersent);
+        //rend.material.SetFloat("_MainTex", );
+
 
         // velocity
         velocity = (lastPos - transform.position) / Time.deltaTime;
@@ -95,7 +95,53 @@ public class Wobble : MonoBehaviour
         lastPos = transform.position;
         lastRot = transform.rotation.eulerAngles;
 
+
+        parent_rot_final = Quaternion.Angle(transform.localRotation, parent_obj.transform.rotation);// 밀크와 컵의 벡터의 각도차
+
+        Debug.Log("최종값 :" + parent_rot_final);
+        if (parent_rot_final > 92 && gameObject.CompareTag("Milk_Inner"))
+        {
+            capuccino.SetActive(true);
+            ///Milk_Flow.SetBool(aniIsCheck, true);
+            Debug.Log("나왔다");
+            CoMilk_Out();
+
+        }
+
+
     }
+
+
+
+
+    public void CoMilk_Out()
+    {
+        StartCoroutine(Milk_Out());
+    }
+
+
+
+
+    IEnumerator Milk_Out()
+    {
+        while (fillpersent < 1.25f)
+        {
+            fillpersent += 0.001f;
+
+            
+            yield return new WaitForSeconds(5f);
+            if(fillpersent >0.8f && check_Ani == false)
+            {
+                Milk_Flow.SetBool(aniIsCheck, false);
+                check_Ani = true;
+            }
+        }
+        
+
+        Debug.Log("없어졌다!!");
+    }
+
+
 
     public void Espresso_Fill()
     {
