@@ -23,7 +23,7 @@ public class Wobble : MonoBehaviour
     private int aniIsCheck;
     bool check_Ani;
 
-
+    Color CapuColor;
     public float fillpersent; // 채워지는 값 쉐이더에서 가져왔음
 
     float parent_RotX;
@@ -44,7 +44,7 @@ public class Wobble : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        
+
         parent_obj = transform.parent.gameObject;
         parent_RotX = parent_obj.transform.eulerAngles.x;
         rend = GetComponent<Renderer>();
@@ -79,6 +79,8 @@ public class Wobble : MonoBehaviour
 
         //fillpersent 추가
         rend.material.SetFloat("_FillAmount", fillpersent);
+        rend.material.SetColor("_Tint", CapuColor);
+
         //rend.material.SetFloat("_MainTex", );
 
 
@@ -128,15 +130,15 @@ public class Wobble : MonoBehaviour
         {
             fillpersent += 0.001f;
 
-            
+
             yield return new WaitForSeconds(5f);
-            if(fillpersent >0.8f && check_Ani == false)
+            if (fillpersent > 0.8f && check_Ani == false)
             {
                 Milk_Flow.SetBool(aniIsCheck, false);
                 check_Ani = true;
             }
         }
-        
+
 
         Debug.Log("없어졌다!!");
     }
@@ -155,10 +157,10 @@ public class Wobble : MonoBehaviour
         while (fillpersent > -0.12f)
         {
             fillpersent -= 0.01f;
-            
+
             yield return new WaitForSeconds(0.165f);
         }
-        
-         Debug.Log("다 채워졌다!!");
+
+        Debug.Log("다 채워졌다!!");
     }
 }

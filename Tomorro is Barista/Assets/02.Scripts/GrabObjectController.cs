@@ -14,19 +14,19 @@ public class GrabObjectController : MonoBehaviour
     private SteamVR_Action_Vibration haptic = SteamVR_Actions.default_Haptic;
 
     private Transform tr;      // cameraRig아래에 있는 Controller의 위치   
-    
+
     //애니메이션
     private Animator anim;
     private int hashIsGrabVer; // 그립 파라미터
     private int hashIsFinger;  // 포인트 손가락 파라미터
-    
+
     private GameObject collidingObject; //현재 충돌중인 객체
     private GameObject objectInHand;    //플레이어가 잡은 객체
     private FixedJoint fx;
 
     private void Start()
     {
-        fx =  gameObject.GetComponent<FixedJoint>();
+        fx = gameObject.GetComponent<FixedJoint>();
 
         //controller의 Transform 추출
         tr = GetComponent<Transform>();
@@ -37,7 +37,7 @@ public class GrabObjectController : MonoBehaviour
         //애니메이터 파라미터의 해시값을 추출해 저장
         hashIsGrabVer = Animator.StringToHash("GrabVer");
         hashIsFinger = Animator.StringToHash("Finger");
-       
+
     }
 
     // Update is called once per frame
@@ -94,7 +94,7 @@ public class GrabObjectController : MonoBehaviour
 
     public void FingerAnimOn()
     {
-        anim.SetBool(hashIsFinger, true);  
+        anim.SetBool(hashIsFinger, true);
     }
 
     public void FingerAnimOff()
@@ -121,14 +121,14 @@ public class GrabObjectController : MonoBehaviour
     //충돌이 끝날 때
     public void OnTriggerExit(Collider other) //충돌 상태에서 빠져 나왔을 때, 1회 자동 호출
     {
-        collidingObject = null; 
+        collidingObject = null;
     }
 
     //충돌중인 객체로 설정
     public void SetCollidingObject(Collider col)
     {
         if (collidingObject != null || !col.GetComponent<Rigidbody>())  //collidingObject를 2개 잡지 않기 위해 || rigidbody가 없는 object는 충돌객체로 인식x
-        {                                                       
+        {
             return;
         }
 
@@ -144,7 +144,7 @@ public class GrabObjectController : MonoBehaviour
 
         var joint = AddFixedJoint();
         joint.connectedBody = objectInHand.GetComponent<Rigidbody>();
-        
+
     }
     //FixedJoint = 객체들을 하나로 묶어 고정 시킴
     //breakForce = 조인트가 제거되기 위해 필요한 힘의 크기
